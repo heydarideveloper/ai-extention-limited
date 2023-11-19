@@ -5,14 +5,12 @@ let messageCount: number = 0;
 let startTime: number | null = null;
 function setStartTime() {
   startTime = Date.now();
-  localStorage.setItem(PersistKey.ChatDisabled, startTime.toString());
   return startTime;
 }
 function checkMessageCount(_startTime: number | null): void {
   startTime = _startTime;
   if (startTime === null) {
     startTime = setStartTime();
-    startCountdown(startTime);
   }
 
   const elapsedTime: number = getElapsedTime(startTime);
@@ -23,12 +21,13 @@ function checkMessageCount(_startTime: number | null): void {
   }
 
   messageCount++;
-  if (messageCount >= 12) {
+  if (messageCount >= 2) {
     alert(
       "آخ آخ عزیزم تو محدودیت 12 تا سوال در سه ساعت خودت و تکمیل کردی ممنون ازت سه ساعت دیگه میبینمت.",
     );
 
     if (inputField) {
+      localStorage.setItem(PersistKey.ChatDisabled, startTime.toString());
       startCountdown(startTime);
       inputField.disabled;
       inputField.setAttribute("disabled", "true");
