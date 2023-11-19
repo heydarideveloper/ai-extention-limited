@@ -21,7 +21,7 @@ function checkMessageCount(_startTime: number | null): void {
   }
 
   messageCount++;
-  if (messageCount >= 2) {
+  if (messageCount >= 12) {
     alert(
       "آخ آخ عزیزم تو محدودیت 12 تا سوال در سه ساعت خودت و تکمیل کردی ممنون ازت سه ساعت دیگه میبینمت.",
     );
